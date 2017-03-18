@@ -13,5 +13,34 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('login');
+});
+
+Route::post('/login', function()
+{
+	$user = Input::except('_token');
+	//die(var_dump($user));
+	if (Auth::attempt($user))
+	{
+		return Redirect::intended('dashboard');
+	}
+});
+
+Route::get('/logout', function()
+{
+	Auth::logout();
+	return Redirect::to('/');
+});
+
+Route::group(array('before' => 'auth'), function()
+{
+	Route::get('/dashboard', function()
+	{
+		return View::make('dashboard');
+	});
+
+	Route::get('user/profile', function()
+	{
+		// Has Auth Filter
+	});
 });
