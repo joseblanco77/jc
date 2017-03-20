@@ -19,7 +19,6 @@ Route::get('/', function()
 Route::post('/login', function()
 {
 	$user = Input::except('_token');
-	//die(var_dump($user));
 	if (Auth::attempt($user))
 	{
 		return Redirect::intended('dashboard');
