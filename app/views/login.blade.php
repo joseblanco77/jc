@@ -16,5 +16,9 @@
 		<dd>{{ Form::submit('Ingresar')  }}</dd>
 	</dl>
 	{{ Form::close() }}
+
+	@if( Session::get('loginfail') )
+		<p style="color:#f00">Login failed</p>
+	@endif
 </body>
 </html>

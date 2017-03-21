@@ -23,6 +23,7 @@ Route::post('/login', function()
 	{
 		return Redirect::intended('dashboard');
 	}
+	return Redirect::to('/')->with('loginfail', 'Login Failed');;
 });
 
 Route::get('/logout', function()
@@ -33,10 +34,10 @@ Route::get('/logout', function()
 
 Route::group(array('before' => 'auth'), function()
 {
-	Route::get('/dashboard', function()
+	Route::get('/dashboard', 'CrudController@showDashboard');  /*function()
 	{
 		return View::make('dashboard');
-	});
+	});                        */
 
 	Route::get('user/profile', function()
 	{

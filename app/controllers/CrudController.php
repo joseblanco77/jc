@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class CrudController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,9 +15,15 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function showDashboard()
 	{
-		return View::make('hello');
+		$data = [
+			'user' => Auth::user(),
+			'products' => Product::get()->sortBy('name')
+		];
+		//die(var_dump($data));
+		$this->layout->content = View::make('dashboard')
+			->with('data', $data);
 	}
 
 }
