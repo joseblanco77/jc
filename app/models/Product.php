@@ -22,4 +22,6 @@ class Product extends Eloquent {
 	 */
 	protected $hidden = [];
 
+	protected $fillable = ['productname','brand','category','price','quantity'];
+
 }

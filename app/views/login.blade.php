@@ -13,12 +13,12 @@
 		<dt>{{ Form::label('password', 'Contraseña') }}</dt>
 		<dd>{{ Form::password('password')  }}</dd>
 		<dt></dt>
-		<dd>{{ Form::submit('Ingresar')  }}</dd>
+		<dd>{{ Form::submit('Ingresar &#x2714;')  }}</dd>
 	</dl>
 	{{ Form::close() }}
 
 	@if( Session::get('loginfail') )
-		<p style="color:#f00">Login failed</p>
+		<p style="color:#900">Login failed</p>
 	@endif
 </body>
 </html>

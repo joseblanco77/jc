@@ -16,6 +16,11 @@ Route::get('/', function()
 	return View::make('login');
 });
 
+Route::get('/login', function()
+{
+	return View::make('login');
+});
+
 Route::post('/login', function()
 {
 	$user = Input::except('_token');
@@ -34,13 +39,15 @@ Route::get('/logout', function()
 
 Route::group(array('before' => 'auth'), function()
 {
-	Route::get('/dashboard', 'CrudController@showDashboard');  /*function()
-	{
-		return View::make('dashboard');
-	});                        */
+	Route::get('/dashboard', 'CrudController@showDashboard');
 
-	Route::get('user/profile', function()
-	{
-		// Has Auth Filter
-	});
+	Route::post('/add-product', 'CrudController@addProduct');
+
+	Route::get('/edit-product/{id}', 'CrudController@editProduct')
+		->where('id', '[0-9]+');
+
+	Route::post('/update-product/{id}', ['as' => 'update-product', 'uses' => 'CrudController@updateProduct'])->where('id', '[0-9]+');
+
+	// Route::get('/delete-product/{id}', 'CrudController@addProduct')->where('id', '[0-9]+');
+
 });

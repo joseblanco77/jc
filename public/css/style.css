@@ -1,0 +1,31 @@
+/*
+http://tutorialzine.com/2014/12/you-dont-need-icons-here-are-100-unicode-symbols-that-you-can-use/
+*/
+a {
+    color: #00f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    border: thin solid #ccc;
+}
+
+table td {
+    border: thin solid #ccc;
+    padding: 3px 6px;
+}
+
+table th {
+    border: thin solid #ccc;
+    background: #ccc;
+    padding: 3px 6px;
+}
+
+span.error {
+    display: block;
+    color: #900;
+}
