@@ -1,3 +1,9 @@
+<h2>Productos</h2>
+
+@if ($data['user']->usertype == 1)
+    @include('add-product')
+@endif
+
 <h3>Listado</h3>
 @if (count($data['products']))
     <table>

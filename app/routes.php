@@ -42,11 +42,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('/dashboard', 'CrudController@showDashboard');
 
 	Route::post('/add-product', 'CrudController@addProduct');
-
 	Route::get('/edit-product/{id}', 'CrudController@editProduct')
 		->where('id', '[0-9]+');
-
 	Route::post('/update-product/{id}', ['as' => 'update-product', 'uses' => 'CrudController@updateProduct'])->where('id', '[0-9]+');
+
+	Route::post('/add-customer', 'CrudController@addCustomer');
+	Route::get('/edit-customer/{id}', 'CrudController@editCustomer')
+		->where('id', '[0-9]+');
+	Route::post('/update-customer/{id}', ['as' => 'update-customer', 'uses' => 'CrudController@updateCustomer'])->where('id', '[0-9]+');
 
 	// Route::get('/delete-product/{id}', 'CrudController@addProduct')->where('id', '[0-9]+');
 
