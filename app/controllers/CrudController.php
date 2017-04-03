@@ -40,11 +40,23 @@ class CrudController extends BaseController {
 		$data = [
 			'user' => Auth::user(),
 			'products' => $products,
-			'customers' => Customer::get()-> sortByDesc('created_at')
+			'customers' => Customer::get()-> sortBy('email')
 		];
 		$this->layout->content = View::make('dashboard')
 			->with('data', $data);
 	}
+
+    public function newPurchase($id)
+    {
+        $products = Product::get()->sortBy('name');
+        $data = [
+            'user' => Auth::user(),
+            'products' => $products,
+            'customer' => Customer::find($id)
+        ];
+        $this->layout->content = View::make('new-purchase')
+            ->with('data', $data);
+    }
 
 	public function addProduct()
 	{
@@ -70,8 +82,9 @@ class CrudController extends BaseController {
 				->withErrors($validator,'customers')
 				->withInput();
 		}
-		Customer::create($post);
-		return Redirect::to('dashboard');
+		$customer = Customer::create($post);
+        Customer::setEmailsCache();
+		return Redirect::to('new-purchase/' . $customer->id);
 	}
 
 	public function editProduct($id)

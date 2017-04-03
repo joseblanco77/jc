@@ -24,4 +24,10 @@ class Customer extends Eloquent {
 
 	protected $fillable = ['customername','phone','address','email','nit','comments'];
 
+	public static function setEmailsCache()
+	{
+		$emails = Customer::lists('email','id');
+		Cache::forever('customersEmail', $emails);
+	}
+
 }

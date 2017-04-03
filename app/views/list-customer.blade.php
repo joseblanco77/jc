@@ -8,24 +8,28 @@
         <thead>
         <tr>
             <th>Nombre</th>
+            <th>Opciones</th>
             <th>Teléfono</th>
             <th>Dirección</th>
             <th>E-mail</th>
             <th>NIT</th>
-            <th>Opciones</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($data['customers'] as $customer)
             <tr>
                 <td>{{ $customer->customername }}</td>
-                <td>{{ $customer->phone }}</td>
-                <td>{{ $customer->address }}</td>
-                <td>{{ $customer->email }}</td>
-                <td>{{ $customer->nit }}</td>
                 <td>
                     {{ link_to('/edit-customer/'.$customer->id,'Editar &#x270e;') }}
                     {{-- link_to('/delete-customer/'.$customer->id,'Borrar &#x2718;') --}}
+                </td>
+                <td>{{ $customer->phone }}</td>
+                <td>{{ $customer->address }}</td>
+                <td>{{ $customer->email }}</td>
+                <td>{{ $customer->nit ? $customer->nit : 'C/F' }}</td>
+                <td>
+                    {{ link_to('/new-purchase/'.$customer->id,'Crear nueva compra &#x27a4;') }}
                 </td>
             </tr>
         @endforeach
