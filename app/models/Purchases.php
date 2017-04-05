@@ -5,7 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Product extends Eloquent {
+class Purchase extends Eloquent {
 
 
 	/**
@@ -13,7 +13,7 @@ class Product extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'products';
+	protected $table = 'purchases';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -22,10 +22,22 @@ class Product extends Eloquent {
 	 */
 	protected $hidden = [];
 
-	protected $fillable = ['productname','brand','category','price','quantity'];
+	protected $fillable = ['customer_id', 'user_id', 'status'];
 
-	public function details()
+
+	public function customer()
 	{
-		return $this->belongsToMany('Detail');
+		return $this->belongsTo('Customer');
 	}
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+
+    public function datails()
+    {
+        return $this->belongsTo('Detail');
+    }
+
 }

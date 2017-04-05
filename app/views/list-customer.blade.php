@@ -29,7 +29,7 @@
                 <td>{{ $customer->email }}</td>
                 <td>{{ $customer->nit ? $customer->nit : 'C/F' }}</td>
                 <td>
-                    {{ link_to('/new-purchase/'.$customer->id,'Crear nueva compra &#x27a4;') }}
+                    {{ link_to('/create-purchase/'.$customer->id,'Crear nueva compra &#x27a4;') }}
                 </td>
             </tr>
         @endforeach

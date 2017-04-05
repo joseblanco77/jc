@@ -24,6 +24,11 @@ class Customer extends Eloquent {
 
 	protected $fillable = ['customername','phone','address','email','nit','comments'];
 
+	public function purchases()
+	{
+		return $this->hasMany('Purchase');
+	}
+
 	public static function setEmailsCache()
 	{
 		$emails = Customer::lists('email','id');
