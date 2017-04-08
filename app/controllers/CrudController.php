@@ -34,6 +34,12 @@ class CrudController extends BaseController
             'customername' => 'required',
             'email'        => 'required|email'
         ];
+        $this->detailRules   = [
+            'product_id'  => 'required|integer',
+            'purchase_id' => 'required|integer',
+            'price'       => 'required|numeric',
+            'quantity'    => 'required|integer'
+        ];
     }
 
 
@@ -61,12 +67,25 @@ class CrudController extends BaseController
 
     public function newPurchase($id)
     {
+        $details = DB::table('details')
+            ->join('products', 'details.product_id', '=', 'products.id')
+            ->select([
+            'details.id',
+            'details.product_id',
+            'details.price',
+            'details.quantity',
+            'products.productname',
+            'products.brand',
+            'products.category'
+        ])
+            ->where('details.purchase_id','=',$id)
+            ->get();
         $data                  = [
             'user'     => Auth::user(),
-            'products' => Product::all()->sortBy('productname')->lists('productname', 'id','price'),
+            'products' => Product::all()->sortBy('productname')->lists('productname', 'id', 'price'),
             'purchase' => Purchase::find($id),
-            'details'  => Detail::where('purchase_id', '=', $id)->get(),
-            'prices' => Product::all()->sortBy('productname')->lists('price', 'id'),
+            'details'  => $details,
+            'prices'   => Product::all()->sortBy('productname')->lists('price', 'id'),
         ];
         $this->layout->content = View::make('purchase')->with('data', $data);
     }
@@ -93,9 +112,21 @@ class CrudController extends BaseController
             return Redirect::to('dashboard')->withErrors($validator, 'customers')->withInput();
         }
         $customer = Customer::create($post);
-        Customer::setEmailsCache();
 
         return Redirect::to('create-purchase/' . $customer->id);
+    }
+
+
+    public function addDetail()
+    {
+        $post      = Input::except('_token');
+        $validator = Validator::make($post, $this->detailRules);
+        if ($validator->fails()) {
+            return Redirect::to('purchase/' . $post['purchase_id'])->withErrors($validator, 'details')->withInput();
+        }
+        Detail::create($post);
+
+        return Redirect::to('purchase/' . $post['purchase_id']);
     }
 
 

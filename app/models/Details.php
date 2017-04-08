@@ -31,9 +31,9 @@ class Detail extends Eloquent
     }
 
 
-    public function products()
+    /*public function products()
     {
-        return $this->belongsToMany('Product');
-    }
+        return $this->hasMany('Product');//, 'detail_product');
+    } */
 
 }

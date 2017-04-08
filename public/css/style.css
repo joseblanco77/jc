@@ -29,3 +29,5 @@ span.error {
     display: block;
     color: #900;
 }
+
+input#price { text-align: right; }

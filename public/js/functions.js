@@ -5,9 +5,13 @@ var scFunctions = {
 
     detailsActions : function () {
         if(typeof productPricesList === "undefined") return false;
-        var productDropDpwn = document.getElementById('productname');
-        productDropDpwn.addEventListener("change", function() {});
-        console.log(productPricesList);
+        var productDropDpwn = document.getElementById('product_id');
+        var productPrice = document.getElementById('price');
+        productDropDpwn.addEventListener("change", function() {
+            var selectedProduct = this.options[this.selectedIndex].getAttribute('value');
+            productPrice.setAttribute('value',productPricesList[selectedProduct]);
+        });
+
     },
 
     init: function () {

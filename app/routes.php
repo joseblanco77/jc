@@ -49,6 +49,7 @@ Route::group([ 'before' => 'auth' ], function () {
 
 	Route::get('/create-purchase/{id}', 'CrudController@createPurchase')->where('id', '[0-9]+');
 	Route::get('/purchase/{id}', 'CrudController@newPurchase')->where('id', '[0-9]+');
+    Route::post('/add-detail', 'CrudController@addDetail');
 
 	// Route::get('/delete-product/{id}', 'CrudController@addProduct')->where('id', '[0-9]+');
 
