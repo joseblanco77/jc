@@ -1,24 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-</head>
-<body>
-	<h1>Sistemita culero</h1>
-	{{ Form::open(['url' => 'login', 'method' => 'post']) }}
-	<dl>
-		<dt>{{ Form::label('email', 'Correo electrónico') }}</dt>
-		<dd>{{ Form::email('username', null, ['placeholder' => 'username@domain.com'])  }}</dd>
-		<dt>{{ Form::label('password', 'Contraseña') }}</dt>
-		<dd>{{ Form::password('password')  }}</dd>
-		<dt></dt>
-		<dd>{{ Form::submit('Ingresar &#x2714;')  }}</dd>
-	</dl>
-	{{ Form::close() }}
 
-	@if( Session::get('loginfail') )
-		<p style="color:#900">Login failed</p>
-	@endif
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="packages/sbadmin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="packages/sbadmin2/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="packages/sbadmin2/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ Form::open(['url' => 'login', 'method' => 'post']) }}
+                            <fieldset>
+                                <div class="form-group">
+                                    {{ Form::email('email', null, ['class'=>'form-control', 'placeholder' => 'username@domain.com','autofocus' => 'autofocus'])  }}
+                                </div>
+                                <div class="form-group">
+                                    {{ Form::password('password', ['class'=>'form-control', 'placeholder' => 'contraseña']) }}
+                                </div>
+                                {{ Form::submit('Ingresar &#x2714;',['class'=>"btn btn-lg btn-success btn-block"])  }}
+                            </fieldset>
+                        {{ Form::close() }}
+                    </div>
+                </div>
+                @if( Session::get('loginfail') )
+                    <div class="alert alert-danger">
+                         No se pudo iniciar la sesión.
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="packages/sbadmin2/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="packages/sbadmin2/vendor/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

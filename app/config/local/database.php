@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'enano',
+			'database'  => 'atta_juancarlos',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
