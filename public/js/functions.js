@@ -3,7 +3,7 @@
  */
 var scFunctions = {
 
-    detailsActions : function () {
+    detailsActions() {
         if(typeof productPricesList === "undefined") return false;
         var productDropDpwn = document.getElementById('product_id');
         var productPrice = document.getElementById('price');
@@ -14,8 +14,23 @@ var scFunctions = {
 
     },
 
+    addProduct() {
+        var addProductLauncher = document.getElementById('addProductLauncher');
+        if(addProductLauncher !== null) {
+            var addProductContainer = document.getElementById('addProductContainer');
+            addProductLauncher.addEventListener("click", function(){
+                addProductContainer.style.display = 'block';
+            });
+            var alertDanger = document.getElementsByClassName('alert-danger');
+            if(alertDanger.length > 0) {
+               addProductContainer.style.display = 'block';
+            }
+        }
+    },
+
     init: function () {
         scFunctions.detailsActions();
+        scFunctions.addProduct();
     }
 
 };

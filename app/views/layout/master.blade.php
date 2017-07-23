@@ -20,11 +20,13 @@
     <!-- Custom CSS -->
     <link href="packages/sbadmin2/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="packages/sbadmin2/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- CSS Culero -->
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="packages/sbadmin2/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    @yield('headlinks')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,10 +78,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Productos</a>
+                            <a href="products"><i class="fa fa-shopping-cart fa-fw"></i> Productos</a>
                         </li>
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Clientes</a>
@@ -97,10 +99,10 @@
         <div id="page-wrapper">
             <div class="row">
 
-                @yield('content')
-
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+
+                    @yield('content')
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -119,14 +121,12 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="packages/sbadmin2/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="packages/sbadmin2/vendor/raphael/raphael.min.js"></script>
-    <script src="packages/sbadmin2/vendor/morrisjs/morris.min.js"></script>
-    <script src="packages/sbadmin2/data/morris-data.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="packages/sbadmin2/dist/js/sb-admin-2.js"></script>
 
+    @yield('footscripts')
+
+    <!-- JavaScript culero -->
     <script type="text/javascript" src="{{ URL::asset('js/functions.js') }}"></script>
 
 </body>

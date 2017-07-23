@@ -1,13 +1,8 @@
 @extends('layout.master')
 
-@section('logout')
-    @parent
-    @include('logout')
-@stop
-
 @section('content')
 
-    @include('list-product')
+    <h1 class="page-header">Dashboard</h1>
 
     @include('list-customer')
 

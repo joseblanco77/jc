@@ -3,19 +3,6 @@
 class CrudController extends BaseController
 {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |	Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
     private $productRules = [ ];
 
     private $customerRules = [ ];
@@ -41,7 +28,6 @@ class CrudController extends BaseController
             'quantity'    => 'required|integer'
         ];
     }
-
 
     public function showDashboard()
     {
@@ -91,18 +77,6 @@ class CrudController extends BaseController
     }
 
 
-    public function addProduct()
-    {
-        $post      = Input::except('_token');
-        $validator = Validator::make($post, $this->productRules);
-        if ($validator->fails()) {
-            return Redirect::to('dashboard')->withErrors($validator, 'products')->withInput();
-        }
-        Product::create($post);
-
-        return Redirect::to('dashboard');
-    }
-
 
     public function addCustomer()
     {
@@ -130,15 +104,6 @@ class CrudController extends BaseController
     }
 
 
-    public function editProduct($id)
-    {
-        $data                  = [
-            'user'    => Auth::user(),
-            'product' => Product::find($id)
-        ];
-        $this->layout->content = View::make('edit-product')->with('data', $data);
-    }
-
 
     public function editCustomer($id)
     {
@@ -147,19 +112,6 @@ class CrudController extends BaseController
             'customer' => Customer::find($id)
         ];
         $this->layout->content = View::make('edit-customer')->with('data', $data);
-    }
-
-
-    public function updateProduct($id)
-    {
-        $post      = Input::except('_token');
-        $validator = Validator::make($post, $this->productRules);
-        if ($validator->fails()) {
-            return Redirect::to('edit-product/' . $id)->withErrors($validator, 'products')->withInput();
-        }
-        Product::find($id)->update($post);
-
-        return Redirect::to('dashboard');
     }
 
 
