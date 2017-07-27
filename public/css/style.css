@@ -8,4 +8,5 @@ td.td-currency span::before {
     left: 5px;
 }
 #addProductContainer { display: none; }
+#addCustomerContainer { display: none; }
 input#price { text-align: right; }

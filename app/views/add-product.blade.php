@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Basic Form Elements
+                Ingrese los datos
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -57,7 +57,6 @@
                                 {{ Form::submit('Guardar &#x2714;', ['class'=>'btn btn-success'])  }}
                             </div>
 
-                        </dl>
                         {{ Form::close() }}
                     </div>
                 </div>

@@ -20,10 +20,28 @@ var scFunctions = {
             var addProductContainer = document.getElementById('addProductContainer');
             addProductLauncher.addEventListener("click", function(){
                 addProductContainer.style.display = 'block';
+                addProductLauncher.style.display  = 'none';
             });
             var alertDanger = document.getElementsByClassName('alert-danger');
             if(alertDanger.length > 0) {
                addProductContainer.style.display = 'block';
+               addProductLauncher.style.display  = 'none';
+            }
+        }
+    },
+
+    addCustomer() {
+        var addCustomerLauncher = document.getElementById('addCustomerLauncher');
+        if(addCustomerLauncher !== null) {
+            var addCustomerContainer = document.getElementById('addCustomerContainer');
+            addCustomerLauncher.addEventListener("click", function(){
+                addCustomerContainer.style.display = 'block';
+                addCustomerLauncher.style.display  = 'none';
+            });
+            var alertDanger = document.getElementsByClassName('alert-danger');
+            if(alertDanger.length > 0) {
+               addCustomerContainer.style.display = 'block';
+               addCustomerLauncher.style.display  = 'none';
             }
         }
     },
@@ -31,6 +49,7 @@ var scFunctions = {
     init: function () {
         scFunctions.detailsActions();
         scFunctions.addProduct();
+        scFunctions.addCustomer();
     }
 
 };

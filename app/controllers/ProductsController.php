@@ -38,11 +38,8 @@ class ProductsController extends BaseController
 
     public function editProduct($id)
     {
-        $data                  = [
-            'user'    => Auth::user(),
-            'product' => Product::find($id)
-        ];
-        $this->layout->content = View::make('edit-product')->with('data', $data);
+        $product =Product::find($id);
+        $this->layout->content = View::make('edit-product')->with('product', $product);
     }
 
     public function updateProduct($id)
@@ -54,7 +51,7 @@ class ProductsController extends BaseController
         }
         Product::find($id)->update($post);
 
-        return Redirect::to('dashboard');
+        return Redirect::to('products');
     }
 
 

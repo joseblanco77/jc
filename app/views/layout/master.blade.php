@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <base href="{{ URL::to('/') }}">
+
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
@@ -84,7 +86,7 @@
                             <a href="products"><i class="fa fa-shopping-cart fa-fw"></i> Productos</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Clientes</a>
+                            <a href="customers"><i class="fa fa-dashboard fa-fw"></i> Clientes</a>
                         </li>
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Reportes</a>

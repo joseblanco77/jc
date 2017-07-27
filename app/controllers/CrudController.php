@@ -3,24 +3,11 @@
 class CrudController extends BaseController
 {
 
-    private $productRules = [ ];
-
-    private $customerRules = [ ];
+    private $detailRules = [ ];
 
 
     function __construct()
     {
-        $this->productRules  = [
-            'productname' => 'required',
-            'brand'       => 'required',
-            'category'    => 'required',
-            'price'       => 'required|numeric',
-            'quantity'    => 'required|integer'
-        ];
-        $this->customerRules = [
-            'customername' => 'required',
-            'email'        => 'required|email'
-        ];
         $this->detailRules   = [
             'product_id'  => 'required|integer',
             'purchase_id' => 'required|integer',
@@ -31,14 +18,7 @@ class CrudController extends BaseController
 
     public function showDashboard()
     {
-        $user                  = Auth::user();
-        $products              = $user->usertype == 1 ? Product::get()->sortBy('name') : [ ];
-        $data                  = [
-            'user'      => Auth::user(),
-            'products'  => $products,
-            'customers' => Customer::get()->sortBy('email')
-        ];
-        $this->layout->content = View::make('dashboard')->with('data', $data);
+        $this->layout->content = View::make('dashboard');
     }
 
 
@@ -76,21 +56,6 @@ class CrudController extends BaseController
         $this->layout->content = View::make('purchase')->with('data', $data);
     }
 
-
-
-    public function addCustomer()
-    {
-        $post      = Input::except('_token');
-        $validator = Validator::make($post, $this->customerRules);
-        if ($validator->fails()) {
-            return Redirect::to('dashboard')->withErrors($validator, 'customers')->withInput();
-        }
-        $customer = Customer::create($post);
-
-        return Redirect::to('create-purchase/' . $customer->id);
-    }
-
-
     public function addDetail()
     {
         $post      = Input::except('_token');
@@ -103,28 +68,5 @@ class CrudController extends BaseController
         return Redirect::to('purchase/' . $post['purchase_id']);
     }
 
-
-
-    public function editCustomer($id)
-    {
-        $data                  = [
-            'user'     => Auth::user(),
-            'customer' => Customer::find($id)
-        ];
-        $this->layout->content = View::make('edit-customer')->with('data', $data);
-    }
-
-
-    public function updateCustomer($id)
-    {
-        $post      = Input::except('_token');
-        $validator = Validator::make($post, $this->customerRules);
-        if ($validator->fails()) {
-            return Redirect::to('edit-customer/' . $id)->withErrors($validator, 'customers')->withInput();
-        }
-        Customer::find($id)->update($post);
-
-        return Redirect::to('dashboard');
-    }
 
 }

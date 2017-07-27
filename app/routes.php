@@ -19,6 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
+	if (Auth::check()) {
+		return Redirect::to('dashboard');
+	}
 	return View::make('login');
 });
 
@@ -47,10 +50,11 @@ Route::group([ 'before' => 'auth' ], function () {
 		[ 'as' => 'update-product', 'uses' => 'ProductsController@updateProduct' ])->where('id', '[0-9]+');
 
 
-	Route::post('/add-customer', 'CrudController@addCustomer');
-	Route::get('/edit-customer/{id}', 'CrudController@editCustomer')->where('id', '[0-9]+');
+	Route::get('customers', 'CustomersController@customers');
+	Route::post('/add-customer', 'CustomersController@addCustomer');
+	Route::get('/edit-customer/{id}', 'CustomersController@editCustomer')->where('id', '[0-9]+');
 	Route::post('/update-customer/{id}',
-		[ 'as' => 'update-customer', 'uses' => 'CrudController@updateCustomer' ])->where('id', '[0-9]+');
+		[ 'as' => 'update-customer', 'uses' => 'CustomersController@updateCustomer' ])->where('id', '[0-9]+');
 
 	Route::get('/create-purchase/{id}', 'CrudController@createPurchase')->where('id', '[0-9]+');
 	Route::get('/purchase/{id}', 'CrudController@newPurchase')->where('id', '[0-9]+');

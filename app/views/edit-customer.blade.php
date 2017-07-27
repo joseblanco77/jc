@@ -1,50 +1,80 @@
 @extends('layout.master')
 
-@section('logout')
-    @parent
-    @include('logout')
-@stop
 
 @section('content')
 
+    <h1 class="page-header">Editar Cliente</h1>
 
-<h2>Editar Cliente</h2>
-{{ Form::model($data['customer'], ['route' => ['update-customer', $data['customer']->id]]) }}
-<dl>
-    <dt>{{ Form::label('customername', 'Nombre del cliente') }}</dt>
-    <dd>
-        {{ Form::text('customername', Input::old('customername'))  }}
-        <span class="error">{{ $errors->customers->first('customername') }}</span>
-    </dd>
-    <dt>{{ Form::label('phone', 'Teléfonos') }}</dt>
-    <dd>
-        {{ Form::text('phone', Input::old('phone'))  }}
-        <span class="error">{{ $errors->customers->first('phone') }}</span>
-    </dd>
-    <dt>{{ Form::label('address', 'Dirección') }}</dt>
-    <dd>
-        {{ Form::text('address', Input::old('address'))  }}
-        <span class="error">{{ $errors->customers->first('address') }}</span>
-    </dd>
-    <dt>{{ Form::label('email', 'E-mail') }}</dt>
-    <dd>
-        {{ Form::text('email', Input::old('email'))  }}
-        <span class="error">{{ $errors->customers->first('email') }}</span>
-    </dd>
-    <dt>{{ Form::label('nit', 'NIT') }}</dt>
-    <dd>
-        {{ Form::text('nit', Input::old('nit'))  }}
-        <span class="error">{{ $errors->customers->first('NIT') }}</span>
-    </dd>
-    <dt>{{ Form::label('comments', 'Comentarios') }}</dt>
-    <dd>
-        {{ Form::textarea('comments', Input::old('comments'))  }}
-        <span class="error">{{ $errors->customers->first('comments') }}</span>
-    </dd>
-    <dt></dt>
-    <dd>{{ Form::submit('Guardar &#x2714;')  }}</dd>
-</dl>
-{{ Form::close() }}
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Ingrese los datos
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        {{ Form::model($customer, ['route' => ['update-customer', $customer->id]]) }}
+
+                            <div class="form-group">
+                                {{ Form::label('customername', 'Nombre del cliente') }}
+                                {{ Form::text('customername', Input::old('customername'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('customername'))
+                                <div class="alert alert-danger">{{ $errors->first('customername') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('phone', 'Teléfonos') }}
+                                {{ Form::text('phone', Input::old('phone'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('phone'))
+                                <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('address', 'Dirección') }}
+                                {{ Form::text('address', Input::old('address'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('address'))
+                                <div class="alert alert-danger">{{ $errors->first('address') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('email', 'E-mail') }}
+                                {{ Form::text('email', Input::old('email'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('email'))
+                                <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('nit', 'NIT') }}
+                                {{ Form::text('nit', Input::old('nit'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('nit'))
+                                <div class="alert alert-danger">{{ $errors->first('nit') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('comments', 'Comentarios') }}
+                                {{ Form::textarea('comments', Input::old('comments'), ['class'=>'form-control'])  }}
+                                @if ($errors->has('comments'))
+                                <div class="alert alert-danger">{{ $errors->first('comments') }}</div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::submit('Guardar &#x2714;', ['class'=>'btn btn-success'])  }}
+                            </div>
+
+                        {{ Form::close() }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop
-s
+
