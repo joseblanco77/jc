@@ -41,7 +41,7 @@ Route::get('/logout', function () {
 });
 
 Route::group([ 'before' => 'auth' ], function () {
-	Route::get('dashboard', 'CrudController@showDashboard');
+	Route::get('dashboard', 'DashboardController@index');
 
 	Route::get('products', 'ProductsController@products');
 	Route::post('add-product', 'ProductsController@addProduct');
@@ -51,14 +51,15 @@ Route::group([ 'before' => 'auth' ], function () {
 
 
 	Route::get('customers', 'CustomersController@customers');
-	Route::post('/add-customer', 'CustomersController@addCustomer');
-	Route::get('/edit-customer/{id}', 'CustomersController@editCustomer')->where('id', '[0-9]+');
-	Route::post('/update-customer/{id}',
+	Route::post('add-customer', 'CustomersController@addCustomer');
+	Route::get('edit-customer/{id}', 'CustomersController@editCustomer')->where('id', '[0-9]+');
+	Route::post('update-customer/{id}',
 		[ 'as' => 'update-customer', 'uses' => 'CustomersController@updateCustomer' ])->where('id', '[0-9]+');
 
-	Route::get('/create-purchase/{id}', 'CrudController@createPurchase')->where('id', '[0-9]+');
-	Route::get('/purchase/{id}', 'CrudController@newPurchase')->where('id', '[0-9]+');
-    Route::post('/add-detail', 'CrudController@addDetail');
+	Route::get('purchases', 'PurchaseController@customers');
+	Route::get('create-purchase/{id}', 'PurchaseController@createPurchase')->where('id', '[0-9]+');
+	Route::get('purchase/{id}', 'PurchaseController@newPurchase')->where('id', '[0-9]+');
+    Route::post('add-detail', 'PurchaseController@addDetail');
 
 	// Route::get('/delete-product/{id}', 'CrudController@addProduct')->where('id', '[0-9]+');
 
