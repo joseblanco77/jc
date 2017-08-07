@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('LT-JOSEB','blanco-pc'),
-    'production' => array('bandbox')
+    'production' => array('bandbox', 'mw.com.gt')
 
 ));
 
