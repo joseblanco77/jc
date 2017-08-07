@@ -10,7 +10,7 @@ class UserTableSeeder extends Seeder {
 
         $now = Carbon::now('America/Guatemala');
 
-        User::create[
+        User::create([
             'realname'      => 'José Blanco',
             'email'         => 'joseblanco77@gmail.com',
             'password'      => Hash::make('jblanco$$12'),
@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder {
             'created_at'    => $now->toDateTimeString()
         ]);
 
-        User::create[
+        User::create([
             'realname'      => 'Juan Carlos Umaña',
             'email'         => 'yinkaumana@gmail.com',
             'password'      => Hash::make('umana&&35'),
@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder {
             'created_at'    => $now->toDateTimeString()
         ]);
 
-        User::create[
+        User::create([
             'realname'      => 'Alejandra Ramirez',
             'email'         => 'alejandra.ramirez.giron@gmail.com',
             'password'      => Hash::make('ramirez$$68'),
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder {
             'created_at'    => $now->toDateTimeString()
         ]);
 
-        User::create[
+        User::create([
             'realname'      => 'Monica Solorzano',
             'email'         => 'msolorzano@mw.com.gt',
             'password'      => Hash::make('monica**56'),
@@ -54,7 +54,7 @@ class UserTableSeeder extends Seeder {
             'created_at'    => $now->toDateTimeString()
         ]);
 
-        User::create[
+        User::create([
             'realname'      => 'Cecilia Altan',
             'email'         => 'caltan77@mw.com.gt',
             'password'      => Hash::make('cecilia##08'),
@@ -65,7 +65,7 @@ class UserTableSeeder extends Seeder {
             'created_at'    => $now->toDateTimeString()
         ]);
 
-        User::create[
+        User::create([
             'realname'      => 'José Mendez',
             'email'         => 'jmendez@mw.com.gt',
             'password'      => Hash::make('jose@@44'),

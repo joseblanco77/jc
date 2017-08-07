@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Sistema de Control MW Salon</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="packages/sbadmin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
