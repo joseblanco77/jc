@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('price', 'Cantidad') }}</dt>
+                            {{ Form::label('price', 'Precio') }}</dt>
                             {{ Form::text('price', '0.00' , ['min'=>1,'required'=>'required', 'class'=>'form-control'])  }}
                             @if ($errors->has('customername'))
                             <div class="alert alert-danger">{{ $errors->first('customername') }}</div>

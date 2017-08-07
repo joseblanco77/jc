@@ -37,7 +37,7 @@ class Purchase extends Eloquent {
 
     public function datails()
     {
-        return $this->belongsTo('Detail');
+        return $this->hasMany('Detail');
     }
 
 }

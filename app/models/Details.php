@@ -22,18 +22,28 @@ class Detail extends Eloquent
      */
     protected $hidden = [ ];
 
-    protected $fillable = [ 'purchase_id', 'product_id', 'price', 'quantity' ];
+    protected $fillable = [ 'purchase_id', 'product_id', 'price', 'quantity', 'user_id' ];
 
 
     public function purchase()
     {
-        return $this->hasMany('Purchase');
+        return $this->belongsTo('Purchase');
     }
 
 
-    /*public function products()
+    public function customer()
     {
-        return $this->hasMany('Product');//, 'detail_product');
-    } */
+        return $this->belongsTo('Customer');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('Product');
+    }
 
 }

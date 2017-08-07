@@ -11,7 +11,7 @@
 
     <base href="{{ URL::to('/') }}">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Sistema de Control MW Salon</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="packages/sbadmin2/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 
 </head>
 
-<body>
+<body class="logged">
 
     <div id="wrapper">
 
@@ -52,33 +52,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Sistemita Culero</a>
+                <a class="navbar-brand" href="/">
+                    Sistema de control
+                    @if(Auth::user()->usertype==1)
+                    - Administrador
+                    @else
+                    - Vendedor
+                    @endif
+                </a>
             </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->realname; }}</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+                        <li>
+                            <a><i class="fa fa-user fa-fw"></i> {{ Auth::user()->realname; }}</a>
+                        </li>
                         <li>
                             <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -88,8 +78,13 @@
                         <li>
                             <a href="customers"><i class="fa fa-dashboard fa-fw"></i> Clientes</a>
                         </li>
+                        @if(Auth::user()->usertype==1)
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Reportes</a>
+                            <a href="reports"><i class="fa fa-dashboard fa-fw"></i> Reportes</a>
+                        </li>
+                        @endif
+                        <li>
+                            <a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
                 </div>

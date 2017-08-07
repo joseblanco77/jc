@@ -38,6 +38,9 @@ class ProductsController extends BaseController
 
     public function editProduct($id)
     {
+        if(Auth::user()->usertype!=1){
+            unset($this->productRules['quantity']);
+        }
         $product =Product::find($id);
         $this->layout->content = View::make('edit-product')->with('product', $product);
     }

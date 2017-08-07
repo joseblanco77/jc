@@ -10,3 +10,16 @@ td.td-currency span::before {
 #addProductContainer { display: none; }
 #addCustomerContainer { display: none; }
 input#price { text-align: right; }
+
+body.login {
+    background: transparent url(../img/mw_400.jpg) no-repeat bottom left fixed;
+}
+
+body.logged {
+    background: transparent url(../img/mw_250.jpg) no-repeat bottom left fixed;
+}
+
+.navbar-brand {
+    background: transparent url(../img/mw_mini.jpg) no-repeat top left fixed;
+    padding-left: 110px;
+}

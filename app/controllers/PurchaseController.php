@@ -30,14 +30,14 @@ class PurchaseController extends BaseController
         $details = DB::table('details')
             ->join('products', 'details.product_id', '=', 'products.id')
             ->select([
-            'details.id',
-            'details.product_id',
-            'details.price',
-            'details.quantity',
-            'products.productname',
-            'products.brand',
-            'products.category'
-        ])
+                'details.id',
+                'details.product_id',
+                'details.price',
+                'details.quantity',
+                'products.productname',
+                'products.brand',
+                'products.category'
+            ])
             ->where('details.purchase_id','=',$id)
             ->get();
         $data                  = [
@@ -45,7 +45,7 @@ class PurchaseController extends BaseController
             'products' => Product::all()->sortBy('productname')->lists('productname', 'id', 'price'),
             'purchase' => Purchase::find($id),
             'details'  => $details,
-            'prices'   => Product::all()->sortBy('productname')->lists('price', 'id'),
+            'prices'   => Product::all()->sortBy('productname')->lists('price', 'id')
         ];
         $this->layout->content = View::make('purchase')->with('data', $data);
     }
@@ -53,10 +53,15 @@ class PurchaseController extends BaseController
     public function addDetail()
     {
         $post      = Input::except('_token');
+        $post['user_id'] = Auth::user()->id;
         $validator = Validator::make($post, $this->detailRules);
         if ($validator->fails()) {
             return Redirect::to('purchase/' . $post['purchase_id'])->withErrors($validator, 'details')->withInput();
         }
+        $product = Product::find($post['product_id']);
+        $product->quantity = (int)$product->quantity - (int)$post['quantity'];
+        //echo "<pre>"; dd($product,$post);
+        $product->save();
         Detail::create($post);
 
         return Redirect::to('purchase/' . $post['purchase_id']);

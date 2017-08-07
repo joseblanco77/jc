@@ -35,4 +35,8 @@ class Customer extends Eloquent {
 		Cache::forever('customersEmail', $emails);
 	}
 
+	public function details()
+	{
+		return $this->hasMany('Detail');
+	}
 }

@@ -47,6 +47,7 @@
                                 @endif
                             </div>
 
+                            @if(Auth::user()->usertype==1)
                             <div class="form-group">
                                 {{ Form::label('quantity', 'Cantidad') }}
                                 {{ Form::text('quantity', Input::old('quantity'), ['class'=>'form-control'])  }}
@@ -54,6 +55,7 @@
                                 <div class="alert alert-danger">{{ $errors->first('quantity') }}</div>
                                 @endif
                             </div>
+                            @endif
 
                             <div class="form-group">
                                 {{ Form::submit('Guardar &#x2714;', ['class'=>'btn btn-success'])  }}

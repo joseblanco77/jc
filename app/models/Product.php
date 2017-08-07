@@ -26,6 +26,6 @@ class Product extends Eloquent {
 
 	public function details()
 	{
-		return $this->belongsToMany('Detail', 'detail_product');
+		return $this->hasMany('Detail');
 	}
 }

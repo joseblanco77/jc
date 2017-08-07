@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="packages/sbadmin2/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="packages/sbadmin2/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +30,7 @@
 
 </head>
 
-<body>
+<body class="login">
 
     <div class="container">
         <div class="row">
