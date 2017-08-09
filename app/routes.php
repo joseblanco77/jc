@@ -56,10 +56,13 @@ Route::group([ 'before' => 'auth' ], function () {
 	Route::post('update-customer/{id}',
 		[ 'as' => 'update-customer', 'uses' => 'CustomersController@updateCustomer' ])->where('id', '[0-9]+');
 
-	Route::get('purchases', 'PurchaseController@customers');
+	Route::get('purchases', 'PurchaseController@purchases');
 	Route::get('create-purchase/{id}', 'PurchaseController@createPurchase')->where('id', '[0-9]+');
 	Route::get('purchase/{id}', 'PurchaseController@newPurchase')->where('id', '[0-9]+');
+	Route::post('edit-purchase/{id}', 'PurchaseController@editPurchase')->where('id', '[0-9]+');
+
     Route::post('add-detail', 'PurchaseController@addDetail');
+    Route::get('delete-detail/{id}', 'PurchaseController@deleteDetail')->where('id', '[0-9]+');
 
     Route::get('reports', 'ReportController@index');
     Route::post('reports-show', 'ReportController@show');

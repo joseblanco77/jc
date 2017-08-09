@@ -19,8 +19,7 @@ class ProductsController extends BaseController
 
     public function products()
     {
-        $user     = Auth::user();
-        $products = $user->usertype == 1 ? Product::get()->sortBy('name') : [ ];
+        $products = Product::get()->sortBy('name');
         $this->layout->content = View::make('products')->with('products', $products);
     }
 
@@ -50,7 +49,7 @@ class ProductsController extends BaseController
         $post      = Input::except('_token');
         $validator = Validator::make($post, $this->productRules);
         if ($validator->fails()) {
-            return Redirect::to('edit-product/' . $id)->withErrors($validator, 'products')->withInput();
+            return Redirect::to('edit-product/' . $id)->withErrors($validator)->withInput();
         }
         Product::find($id)->update($post);
 

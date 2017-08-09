@@ -17,6 +17,7 @@
                                 <th>Precio Unitario</th>
                                 <th>Cantidad</th>
                                 <th>Monto</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,15 +34,16 @@
                                 <td class="text-right td-currency"><span></span> {{ number_format($detail->price, 2) }}</td>
                                 <td class="text-right">{{ $detail->quantity }}</td>
                                 <td class="text-right td-currency"><span></span> {{ number_format($amount, 2) }}</td>
-                                <!-- td>
-                                    {{ link_to('/edit-product/'.$detail->id,'Editar &#x270e;') }}
-                                    {{-- link_to('/delete-product/'.$detail->id,'Borrar &#x2718;') --}}
-                                </td -->
+                                <td>
+
+                                    {{ link_to('/delete-detail/'.$detail->id,'Borrar &#x2718;',['class'=>'delete-detail']) }}
+                                </td>
                             </tr>
                         @endforeach
                             <tr class="info">
                                 <td colspan="5">Total</td>
                                 <td class="text-right td-currency"><span></span> {{ number_format($total, 2) }}</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>

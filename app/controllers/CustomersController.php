@@ -10,7 +10,7 @@ class CustomersController extends BaseController
     {
         $this->customerRules = [
             'customername' => 'required',
-            'email'        => 'required|email'
+            'email'        => 'required|email|unique:customers'
         ];
     }
 
@@ -25,7 +25,7 @@ class CustomersController extends BaseController
         $post      = Input::except('_token');
         $validator = Validator::make($post, $this->customerRules);
         if ($validator->fails()) {
-            return Redirect::to('dashboard')->withErrors($validator, 'customers')->withInput();
+            return Redirect::to('customers')->withErrors($validator)->withInput();
         }
         $customer = Customer::create($post);
 
@@ -43,7 +43,7 @@ class CustomersController extends BaseController
         $post      = Input::except('_token');
         $validator = Validator::make($post, $this->customerRules);
         if ($validator->fails()) {
-            return Redirect::to('edit-customer/' . $id)->withErrors($validator, 'customers')->withInput();
+            return Redirect::to('edit-customer/' . $id)->withErrors($validator)->withInput();
         }
         Customer::find($id)->update($post);
 

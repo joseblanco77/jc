@@ -22,7 +22,7 @@ class Purchase extends Eloquent {
 	 */
 	protected $hidden = [];
 
-	protected $fillable = ['customer_id', 'user_id', 'status'];
+	protected $fillable = ['customer_id', 'user_id', 'invoice', 'payment', 'status'];
 
 
 	public function customer()

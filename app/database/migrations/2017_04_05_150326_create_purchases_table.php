@@ -17,6 +17,8 @@ class CreatePurchasesTable extends Migration {
 			$table->increments('id');
 			$table->integer('customer_id')->unsigned();
 			$table->integer('user_id')->unsigned();
+			$table->string('invoice',10)->nullable();
+			$table->enum('payment', array('Efectivo', 'Tarjeta', 'Cheque', 'Paquete', 'Crédito'));
 			$table->integer('status')->default(1);
 			$table->timestamps();
 

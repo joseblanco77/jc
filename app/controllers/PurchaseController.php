@@ -4,6 +4,7 @@ class PurchaseController extends BaseController
 {
 
     private $detailRules = [ ];
+    private $purchaseRules = [ ];
 
 
     function __construct()
@@ -14,6 +15,17 @@ class PurchaseController extends BaseController
             'price'       => 'required|numeric',
             'quantity'    => 'required|integer'
         ];
+        $this->purchaseRules   = [
+            'invoice'     => 'required|integer',
+            'payment'     => 'required'
+        ];
+    }
+
+    public function purchases()
+    {
+        $purchases = Purchase::get()->sortBy('id',SORT_REGULAR, true);
+        $this->layout->content = View::make('purchases')->with('purchases', $purchases);
+
     }
 
     public function createPurchase($id)
@@ -50,21 +62,44 @@ class PurchaseController extends BaseController
         $this->layout->content = View::make('purchase')->with('data', $data);
     }
 
+    public function editPurchase($id)
+    {
+        $post      = Input::except('_token');
+        $validator = Validator::make($post, $this->purchaseRules);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        $purchase = Purchase::find($id);
+        $purchase->invoice = $post['invoice'];
+        $purchase->payment = $post['payment'];
+        $purchase->save();
+        return Redirect::back();
+    }
+
     public function addDetail()
     {
         $post      = Input::except('_token');
         $post['user_id'] = Auth::user()->id;
         $validator = Validator::make($post, $this->detailRules);
         if ($validator->fails()) {
-            return Redirect::to('purchase/' . $post['purchase_id'])->withErrors($validator, 'details')->withInput();
+            return Redirect::to('purchase/' . $post['purchase_id'])->withErrors($validator)->withInput();
         }
         $product = Product::find($post['product_id']);
         $product->quantity = (int)$product->quantity - (int)$post['quantity'];
-        //echo "<pre>"; dd($product,$post);
         $product->save();
         Detail::create($post);
 
         return Redirect::to('purchase/' . $post['purchase_id']);
+    }
+
+    public function deleteDetail($id)
+    {
+        $detail  = Detail::find($id);
+        $product = Product::find($detail->product_id);
+        $product->quantity = (int)$product->quantity + (int)$detail->quantity;
+        $product->save();
+        $detail->delete();
+        return Redirect::back();
     }
 
 

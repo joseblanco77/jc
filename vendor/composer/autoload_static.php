@@ -235,6 +235,7 @@ class ComposerStaticInitb43d2cc08aaf78ba547e85914d43c51e
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/app/tests/TestCase.php',
         'User' => __DIR__ . '/../..' . '/app/models/User.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/app/database/seeds/UserTableSeeder.php',
         'Whoops\\Module' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/Module.php',
         'Whoops\\Provider\\Zend\\ExceptionStrategy' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/ExceptionStrategy.php',
         'Whoops\\Provider\\Zend\\RouteNotFoundStrategy' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/RouteNotFoundStrategy.php',

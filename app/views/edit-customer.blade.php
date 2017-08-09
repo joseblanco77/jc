@@ -14,6 +14,7 @@
                 <div class="row">
                     <div class="col-lg-6">
 
+
                         {{ Form::model($customer, ['route' => ['update-customer', $customer->id]]) }}
 
                             <div class="form-group">

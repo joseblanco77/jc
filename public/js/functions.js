@@ -46,10 +46,20 @@ var scFunctions = {
         }
     },
 
+    deleteDetail() {
+        var deleteDetail = document.getElementsByClassName('delete-detail');
+        for(var i = 0, len = deleteDetail.length; i < len; i++){
+            deleteDetail[i].addEventListener('click',function(){
+                return confirm('¿Confirma que elimina este registro permanentemente?');
+            });
+        }
+    },
+
     init: function () {
         scFunctions.detailsActions();
         scFunctions.addProduct();
         scFunctions.addCustomer();
+        scFunctions.deleteDetail();
     }
 
 };

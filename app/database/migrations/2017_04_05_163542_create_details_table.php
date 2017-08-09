@@ -18,7 +18,6 @@ class CreateDetailsTable extends Migration {
 			$table->integer('purchase_id')->unsigned()->index();
 			$table->integer('product_id')->unsigned()->index();
 			$table->integer('user_id')->unsigned()->index();
-			$table->string('invoice',10)->nullable();
 			$table->decimal('price',10,2);
 			$table->integer('quantity');
 			$table->timestamps();

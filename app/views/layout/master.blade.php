@@ -78,6 +78,9 @@
                         <li>
                             <a href="customers"><i class="fa fa-dashboard fa-fw"></i> Clientes</a>
                         </li>
+                        <li>
+                            <a href="purchases"><i class="fa fa-money fa-fw"></i> Compras</a>
+                        </li>
                         @if(Auth::user()->usertype==1)
                         <li>
                             <a href="reports"><i class="fa fa-dashboard fa-fw"></i> Reportes</a>

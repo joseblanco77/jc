@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'realname'      => 'Juan Carlos Umaña',
-            'email'         => 'yinkaumana@gmail.com',
+            'email'         => 'juan.umana@mw.com.gt',
             'password'      => Hash::make('umana&&35'),
             'dpi'           => '',
             'cellphone'     => '',
@@ -34,7 +34,7 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'realname'      => 'Alejandra Ramirez',
-            'email'         => 'alejandra.ramirez.giron@gmail.com',
+            'email'         => 'alejandra.ramirez@mw.com.gt',
             'password'      => Hash::make('ramirez$$68'),
             'dpi'           => '',
             'cellphone'     => '',
@@ -45,7 +45,7 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'realname'      => 'Monica Solorzano',
-            'email'         => 'msolorzano@mw.com.gt',
+            'email'         => 'monica.solorzano@mw.com.gt',
             'password'      => Hash::make('monica**56'),
             'dpi'           => '',
             'cellphone'     => '5595 1521',
@@ -56,7 +56,7 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'realname'      => 'Cecilia Altan',
-            'email'         => 'caltan77@mw.com.gt',
+            'email'         => 'cecy.altan@mw.com.gt',
             'password'      => Hash::make('cecilia##08'),
             'dpi'           => '',
             'cellphone'     => '',
@@ -67,7 +67,7 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'realname'      => 'José Mendez',
-            'email'         => 'jmendez@mw.com.gt',
+            'email'         => 'jose.mendez@mw.com.gt',
             'password'      => Hash::make('jose@@44'),
             'dpi'           => '2976061231101',
             'cellphone'     => '3025-3893',
