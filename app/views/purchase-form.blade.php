@@ -69,22 +69,43 @@
                     {{ Form::open(['url' => '/edit-purchase/'.$data['purchase']->id, 'method' => 'post']) }}
 
                         <div class="form-group">
+                            <?php
+                                $invoiceOptions = ['id'=>'invoiceInput','required'=>'required', 'class'=>'form-control'];
+                                if (!empty($data['purchase']->invoice)) {
+                                    $invoiceOptions['disabled'] = 'disabled';
+                                }
+                            ?>
                             {{ Form::label('invoice', 'Número de factura') }}
-                            {{ Form::text('invoice', $data['purchase']->invoice, ['required'=>'required', 'class'=>'form-control'])  }}
+                            {{ Form::text('invoice', $data['purchase']->invoice, $invoiceOptions)  }}
                             @if ($errors->has('invoice'))
                             <div class="alert alert-danger">{{ $errors->first('invoice') }}</div>
                             @endif
                         </div>
 
                         <div class="form-group">
+                            <?php
+                                $paymentMethods = [''=>'Seleccione','Efectivo'=>'Efectivo', 'Tarjeta'=>'Tarjeta', 'Cheque'=>'Cheque', 'Paquete'=>'Paquete', 'Crédito'=>'Crédito'];
+                                $paymentOptions = ['id'=>'paymentSelect','required'=>'required', 'class'=>'form-control'];
+                                if (!empty($data['purchase']->payment)) {
+                                    $paymentOptions['disabled'] = 'disabled';
+                                }
+                            ?>
                             {{ Form::label('payment', 'Forma de pago') }}
-                            {{ Form::select('payment', [''=>'Seleccione','Efectivo'=>'Efectivo', 'Tarjeta'=>'Tarjeta', 'Cheque'=>'Cheque', 'Paquete'=>'Paquete', 'Crédito'=>'Crédito'],$data['purchase']->payment,['required'=>'required', 'class'=>'form-control'])  }}
+                            {{ Form::select('payment', $paymentMethods, $data['purchase']->payment, $paymentOptions)  }}
                             @if ($errors->has('payment'))
                             <div class="alert alert-danger">{{ $errors->first('payment') }}</div>
                             @endif
                         </div>
-
-                        {{ Form::submit('Guardar', ['class'=>'btn btn-success'])  }}
+                        <?php
+                            $savePurchaseOptions = ['class'=>'btn btn-success', 'id'=>'savePurchase'];
+                            $editPurchaseOptions = ['class'=>'btn btn-primary', 'id'=>'editPurchase', 'disabled'=>'disabled'];
+                            if(isset($invoiceOptions['disabled']) || isset($paymentOptions['disabled'])) {
+                                $savePurchaseOptions['disabled'] = 'disabled';
+                                unset($editPurchaseOptions['disabled']);
+                            }
+                        ?>
+                        {{ Form::submit('Guardar', $savePurchaseOptions) }}
+                        {{ Form::button('Editar', $editPurchaseOptions) }}
                     {{ Form::close() }}
 
                 </div>

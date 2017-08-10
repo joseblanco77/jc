@@ -55,11 +55,25 @@ var scFunctions = {
         }
     },
 
+    editPurchase() {
+        var invoiceInput  = document.getElementById('invoiceInput');
+        var paymentSelect = document.getElementById('paymentSelect');
+        var savePurchase  = document.getElementById('savePurchase');
+        var editPurchase  = document.getElementById('editPurchase');
+        editPurchase.addEventListener('click',function(){
+            invoiceInput.removeAttribute('disabled');
+            paymentSelect.removeAttribute('disabled');
+            savePurchase.removeAttribute('disabled');
+            editPurchase.setAttribute('disabled','disabled');
+        });
+    },
+
     init: function () {
         scFunctions.detailsActions();
         scFunctions.addProduct();
         scFunctions.addCustomer();
         scFunctions.deleteDetail();
+        scFunctions.editPurchase();
     }
 
 };
