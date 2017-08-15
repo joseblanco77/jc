@@ -58,11 +58,13 @@ var scFunctions = {
     editPurchase() {
         var invoiceInput  = document.getElementById('invoiceInput');
         var paymentSelect = document.getElementById('paymentSelect');
+        var userId        = document.getElementById('user_id');
         var savePurchase  = document.getElementById('savePurchase');
         var editPurchase  = document.getElementById('editPurchase');
         editPurchase.addEventListener('click',function(){
             invoiceInput.removeAttribute('disabled');
             paymentSelect.removeAttribute('disabled');
+            userId.removeAttribute('disabled');
             savePurchase.removeAttribute('disabled');
             editPurchase.setAttribute('disabled','disabled');
         });

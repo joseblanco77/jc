@@ -70,10 +70,7 @@
 
                         <div class="form-group">
                             <?php
-                                $invoiceOptions = ['id'=>'invoiceInput','required'=>'required', 'class'=>'form-control'];
-                                if (!empty($data['purchase']->invoice)) {
-                                    $invoiceOptions['disabled'] = 'disabled';
-                                }
+                                $invoiceOptions = ['id'=>'invoiceInput','required'=>'required', 'class'=>'form-control', 'disabled'=>'disabled'];
                             ?>
                             {{ Form::label('invoice', 'Número de factura') }}
                             {{ Form::text('invoice', $data['purchase']->invoice, $invoiceOptions)  }}
@@ -85,10 +82,7 @@
                         <div class="form-group">
                             <?php
                                 $paymentMethods = [''=>'Seleccione','Efectivo'=>'Efectivo', 'Tarjeta'=>'Tarjeta', 'Cheque'=>'Cheque', 'Paquete'=>'Paquete', 'Crédito'=>'Crédito'];
-                                $paymentOptions = ['id'=>'paymentSelect','required'=>'required', 'class'=>'form-control'];
-                                if (!empty($data['purchase']->payment)) {
-                                    $paymentOptions['disabled'] = 'disabled';
-                                }
+                                $paymentOptions = ['id'=>'paymentSelect','required'=>'required', 'class'=>'form-control', 'disabled'=>'disabled'];
                             ?>
                             {{ Form::label('payment', 'Forma de pago') }}
                             {{ Form::select('payment', $paymentMethods, $data['purchase']->payment, $paymentOptions)  }}
@@ -99,7 +93,7 @@
                         @if(Auth::user()->usertype==1)
                         <div class="form-group">
                             {{ Form::label('user_id', 'Vendedor') }}
-                            {{ Form::select('user_id', $data['users'], Auth::user()->id, ['class'=>'form-control']) }}
+                            {{ Form::select('user_id', $data['users'], Auth::user()->id, ['class'=>'form-control','disabled'=>'disabled']) }}
                         </div>
                         @endif
                         <?php
