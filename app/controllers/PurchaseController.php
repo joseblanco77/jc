@@ -54,6 +54,7 @@ class PurchaseController extends BaseController
             ->get();
         $data                  = [
             'user'     => Auth::user(),
+            'users'    => User::all()->lists('realname','id'),
             'products' => Product::all()->sortBy('productname')->lists('productname', 'id', 'price'),
             'purchase' => Purchase::find($id),
             'details'  => $details,

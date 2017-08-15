@@ -96,6 +96,12 @@
                             <div class="alert alert-danger">{{ $errors->first('payment') }}</div>
                             @endif
                         </div>
+                        @if(Auth::user()->usertype==1)
+                        <div class="form-group">
+                            {{ Form::label('user_id', 'Vendedor') }}
+                            {{ Form::select('user_id', $data['users'], Auth::user()->id, ['class'=>'form-control']) }}
+                        </div>
+                        @endif
                         <?php
                             $savePurchaseOptions = ['class'=>'btn btn-success', 'id'=>'savePurchase'];
                             $editPurchaseOptions = ['class'=>'btn btn-primary', 'id'=>'editPurchase', 'disabled'=>'disabled'];
