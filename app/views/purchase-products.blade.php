@@ -17,6 +17,7 @@
                                 <th>Precio Unitario</th>
                                 <th>Cantidad</th>
                                 <th>Monto</th>
+                                <th>Vendedor</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -34,6 +35,7 @@
                                 <td class="text-right td-currency"><span></span> {{ number_format($detail->price, 2) }}</td>
                                 <td class="text-right">{{ $detail->quantity }}</td>
                                 <td class="text-right td-currency"><span></span> {{ number_format($amount, 2) }}</td>
+                                <td>{{ $detail->realname }}</td>
                                 <td>
 
                                     {{ link_to('/delete-detail/'.$detail->id,'Borrar &#x2718;',['class'=>'delete-detail']) }}
@@ -43,7 +45,7 @@
                             <tr class="info">
                                 <td colspan="5">Total</td>
                                 <td class="text-right td-currency"><span></span> {{ number_format($total, 2) }}</td>
-                                <td></td>
+                                <td colspan="2"></td>
                             </tr>
                         </tbody>
                     </table>

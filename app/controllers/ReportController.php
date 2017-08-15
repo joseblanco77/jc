@@ -47,25 +47,9 @@ class ReportController extends BaseController
             $report['Vendedor'] = $user->realname;
         }
 
-        $now = Carbon::now('America/Guatemala');
-        $end = $now->toDateString() . ' 23:59:59';
 
-        switch ($post['date_range']) {
-            case 'mes':
-                $ini = $now->subDays(30)->toDateString() . ' 00:00:00';
-                break;
-
-            case 'semana':
-                $ini = $now->subDays(6)->toDateString() . ' 00:00:00';
-                break;
-
-            default:
-                $ini = $now->toDateString() . ' 00:00:00';
-                break;
-        }
-
-        $report['inicio'] = date('m-d-Y', strtotime($ini));
-        $report['fin']    = date('m-d-Y', strtotime($end));
+        $ini = date('Y-m-d', strtotime(Input::get('date_ini'))) . ' 00:00:00';
+        $end = date('Y-m-d', strtotime(Input::get('date_end'))) . ' 23:59:59';
         $report['data']   = $details->whereBetween('details.created_at', [$ini, $end])
                                     ->orderBy('details.created_at','asc')
                                     ->get();

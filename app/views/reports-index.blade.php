@@ -22,8 +22,13 @@
                         </div>
 
                         <div class="form-group">
-                            {{ Form::label('date_range', 'Fecha') }}</dt>
-                            {{ Form::select('date_range', ['hoy'=>'Hoy','semana'=>'Ultimos 7 días','mes'=>'Últimos 30 días'],null,['required'=>'required', 'class'=>'form-control'])  }}
+                            {{ Form::label('date_ini', 'Fecha inicio') }}</dt>
+                            {{ Form::text('date_ini', date('d-m-y'), ['required'=>'required', 'class'=>'form-control'])  }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('date_end', 'Fecha final') }}</dt>
+                            {{ Form::text('date_end', date('d-m-y'), ['required'=>'required', 'class'=>'form-control'])  }}
                         </div>
 
                         <div class="form-group">
@@ -40,5 +45,25 @@
 
 
 @stop
+
+
+@section('headlinks')
+<link rel="stylesheet" type="text/css" href="packages/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+@stop
+
+@section('footscripts')
+<script type="text/javascript" src="packages/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $( "#date_ini" ).datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+        $( "#date_end" ).datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+    });
+</script>
+@stop
+
 
 

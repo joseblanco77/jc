@@ -41,6 +41,7 @@ class PurchaseController extends BaseController
     {
         $details = DB::table('details')
             ->join('products', 'details.product_id', '=', 'products.id')
+            ->join('users', 'details.user_id', '=', 'users.id')
             ->select([
                 'details.id',
                 'details.product_id',
@@ -48,7 +49,8 @@ class PurchaseController extends BaseController
                 'details.quantity',
                 'products.productname',
                 'products.brand',
-                'products.category'
+                'products.category',
+                'users.realname'
             ])
             ->where('details.purchase_id','=',$id)
             ->get();
@@ -80,7 +82,6 @@ class PurchaseController extends BaseController
     public function addDetail()
     {
         $post      = Input::except('_token');
-        $post['user_id'] = Auth::user()->id;
         $validator = Validator::make($post, $this->detailRules);
         if ($validator->fails()) {
             return Redirect::to('purchase/' . $post['purchase_id'])->withErrors($validator)->withInput();

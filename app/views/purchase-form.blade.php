@@ -33,7 +33,16 @@
                             @endif
                         </div>
 
-                            {{ Form::hidden('purchase_id', $data['purchase']->id)  }}
+                        @if(Auth::user()->usertype==1)
+                        <div class="form-group">
+                            {{ Form::label('user_id', 'Vendedor') }}
+                            {{ Form::select('user_id', $data['users'], Auth::user()->id, ['class'=>'form-control']) }}
+                        </div>
+                        @else
+                            {{ Form::hidden('user_id', Auth::user()->id)  }}
+                        @endif
+
+                        {{ Form::hidden('purchase_id', $data['purchase']->id)  }}
 
                         <div class="form-group">
                             {{ Form::submit('Agregar', ['class'=>'btn btn-success'])  }}
@@ -90,12 +99,6 @@
                             <div class="alert alert-danger">{{ $errors->first('payment') }}</div>
                             @endif
                         </div>
-                        @if(Auth::user()->usertype==1)
-                        <div class="form-group">
-                            {{ Form::label('user_id', 'Vendedor') }}
-                            {{ Form::select('user_id', $data['users'], Auth::user()->id, ['class'=>'form-control','disabled'=>'disabled']) }}
-                        </div>
-                        @endif
                         <?php
                             $savePurchaseOptions = ['class'=>'btn btn-success', 'id'=>'savePurchase'];
                             $editPurchaseOptions = ['class'=>'btn btn-primary', 'id'=>'editPurchase', 'disabled'=>'disabled'];
