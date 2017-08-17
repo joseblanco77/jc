@@ -28,7 +28,9 @@ class ReportController extends BaseController
         }
         $post   = Input::except('_token');
         $report = $this->generate($post);
-        $this->layout->content = View::make('reports-show')->with('report',$report);
+        $ini = Input::get('date_ini');
+        $end = Input::get('date_end');
+        $this->layout->content = View::make('reports-show')->with('report',$report)->with('ini',$ini)->with('end',$end);
     }
 
     private function generate($post)

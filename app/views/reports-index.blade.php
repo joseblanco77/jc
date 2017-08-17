@@ -23,12 +23,12 @@
 
                         <div class="form-group">
                             {{ Form::label('date_ini', 'Fecha inicio') }}</dt>
-                            {{ Form::text('date_ini', date('d-m-y'), ['required'=>'required', 'class'=>'form-control'])  }}
+                            {{ Form::text('date_ini', date('d-m-Y'), ['required'=>'required', 'class'=>'form-control'])  }}
                         </div>
 
                         <div class="form-group">
                             {{ Form::label('date_end', 'Fecha final') }}</dt>
-                            {{ Form::text('date_end', date('d-m-y'), ['required'=>'required', 'class'=>'form-control'])  }}
+                            {{ Form::text('date_end', date('d-m-Y'), ['required'=>'required', 'class'=>'form-control'])  }}
                         </div>
 
                         <div class="form-group">

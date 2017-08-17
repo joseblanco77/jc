@@ -15,8 +15,15 @@
 @section('content')
 
     <h2>Reporte de ventas - {{ $report['vendedor'] }}</h2>
+    <h3>{{ $ini }} - {{ $end }}</h3>
 
     @include('report-data')
+
+    <div class="row">
+        <div class="col-lg-12">
+        <a href="{{ URL::previous() }}" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
 
 @stop
 
