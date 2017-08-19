@@ -23,7 +23,7 @@ class PurchaseController extends BaseController
 
     public function purchases()
     {
-        $purchases = Purchase::get()->sortBy('id',SORT_REGULAR, true);
+        $purchases = Purchase::get()->sortBy('created_at',SORT_REGULAR, true);
         $this->layout->content = View::make('purchases')->with('purchases', $purchases);
 
     }

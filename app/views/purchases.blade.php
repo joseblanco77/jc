@@ -80,6 +80,7 @@
 <script>
 $(document).ready(function() {
     $('#purchaseList').DataTable({
+        "order": [[ 0, 'desc' ]]
         responsive: true
     });
 });
